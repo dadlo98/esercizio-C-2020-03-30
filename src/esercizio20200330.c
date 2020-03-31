@@ -22,7 +22,7 @@ unsigned long * fibonacci_array(unsigned int n){
 			perror("calloc error!");
 			exit(EXIT_FAILURE);
 		}
-	for(int i=0; i<n+1; i++){
+	for(int i=0; i<n+1; i++) {
 		array[i]=fibonacci(i);
 	}
 
@@ -71,28 +71,28 @@ void test_array(unsigned long * array,unsigned int length){
 int main(int argc, char *argv[]) {
 
 	unsigned long * fibonacci_result = fibonacci_array(39);
-		printf("Ecco la serie di fibonacci fino a n=39:\n");
-			test_array(fibonacci_result,40);
+	printf("Ecco la serie di fibonacci fino a n=39:\n");
+	test_array(fibonacci_result,40);
 
 	unsigned long * fibonacci_result_copy = calloc(40,sizeof(unsigned long));
-		if (fibonacci_result_copy == NULL) {
-				perror("calloc error!");
-				exit(EXIT_FAILURE);
-			}
+	if (fibonacci_result_copy == NULL) {
+			perror("calloc error!");
+			exit(EXIT_FAILURE);
+	}
 
 	memcpy(fibonacci_result_copy,fibonacci_result,40*sizeof(unsigned long));
 	fibonacci_result_copy = complete_reverse_ulong(fibonacci_result_copy,40);
-		printf("Ecco la serie di fibonacci fino a n=39 ribaltata:\n");
-			test_array(fibonacci_result_copy,40);
+	printf("Ecco la serie di fibonacci fino a n=39 ribaltata:\n");
+	test_array(fibonacci_result_copy,40);
 
 	bubble_sort(fibonacci_result_copy,40);
-		printf("Ecco la serie di fibonacci fino a n=39 riordinata dal reverse:\n");
-			test_array(fibonacci_result_copy,40);
+	printf("Ecco la serie di fibonacci fino a n=39 riordinata dal reverse:\n");
+	test_array(fibonacci_result_copy,40);
 
 	unsigned long result;
 	result = memcmp(fibonacci_result,fibonacci_result_copy,40*sizeof(unsigned long));
 	//aggiungere printf per verifica
-		printf("Il risultato della verifica tra i due array è: %lu",result);
+	printf("Il risultato della verifica tra i due array è: %lu",result);
 
 	return 0;
 }
